@@ -9,6 +9,15 @@ Camera::Camera() noexcept
     Reset();
 }
 
+Camera::Camera( float x,float y,float z,float d_pitch,float d_yaw ) noexcept
+    :
+    pos( x,y,z ),
+    eyeDir( { 0.0f,0.0f,1.0f } ),
+    d_pitch( d_pitch ),
+    d_yaw( d_yaw )
+{
+}
+
 void Camera::ShowControlWindow() noexcept
 {
     constexpr float offset = 100.0f;
@@ -27,11 +36,12 @@ void Camera::ShowControlWindow() noexcept
 
         ImGui::Text( "Direction" );
         ImGui::SameLine( offset );
-        ImGui::DragFloat( "##pitch",&d_pitch,1.0f,0.0f,360.0f,"%.2f" );
+        ImGui::DragFloat( "##pitch",&d_pitch,1.0f,0.0f,0.0f,"%.2f" );
         ImGui::SameLine( 0.0f,0.0f );
-        ImGui::DragFloat( "##yaw",&d_yaw,1.0f,0.0f,360.0f,"%.2f" );
+        ImGui::DragFloat( "##yaw",&d_yaw,1.0f,0.0f,0.0f,"%.2f" );
 
         ImGui::PopItemWidth();
+        WrapAngles();
     }
     ImGui::End();
 }
@@ -47,7 +57,7 @@ void Camera::Inputs( const Mouse::Event& mouse,const Keyboard& kbd ) noexcept
     // ----- Keyboard ----- //
 
     constexpr float y_speed = 1.0f;
-    constexpr float PIOver2 = MorMath::PI / 2.0f;
+    constexpr float PIOver2 = Mor::Math::PI / 2.0f;
     namespace dx = DirectX;
 
     dx::XMVECTOR vpos = dx::XMLoadFloat3( &pos );
@@ -84,8 +94,8 @@ DirectX::XMMATRIX Camera::GetMatrix() const noexcept
     namespace dx = DirectX;
     constexpr dx::XMVECTOR eyedir_s = { 0.0f,0.0f,1.0f,0.0f };
     constexpr dx::XMVECTOR up = { 0.0f,1.0f,0.0f,0.0f };
-    const float r_pitch = MorMath::ToRadians( d_pitch );
-    const float r_yaw = MorMath::ToRadians( d_yaw );
+    const float r_pitch = Mor::Math::ToRadians( d_pitch );
+    const float r_yaw = Mor::Math::ToRadians( d_yaw );
 
     const dx::XMVECTOR cPos = dx::XMLoadFloat3( &pos );
     const dx::XMMATRIX rotation = dx::XMMatrixRotationRollPitchYaw( r_pitch,r_yaw,0.0f );
@@ -110,6 +120,6 @@ void Camera::Reset() noexcept
 
 void Camera::WrapAngles() noexcept
 {
-    d_pitch = MorMath::wrap_angle( d_pitch );
-    d_yaw = MorMath::wrap_angle( d_yaw );
+    d_pitch = Mor::Math::ToDegreees( Mor::Math::wrap_angle( Mor::Math::ToRadians( d_pitch ) ) );
+    d_yaw = Mor::Math::ToDegreees( Mor::Math::wrap_angle( Mor::Math::ToRadians( d_yaw ) ) );
 }

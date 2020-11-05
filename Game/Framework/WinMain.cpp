@@ -1,5 +1,5 @@
 
-#include "App.h"
+#include "../Src/App.h"
 #include "ErrorHandle/MorExeption.h"
 #include <sstream>
 #include "Managers/GDIPlusManager.h"

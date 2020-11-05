@@ -104,7 +104,8 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Framework\App.cpp" />
+    <ClCompile Include="Framework\Drawable\Line.cpp" />
+    <ClCompile Include="Framework\Drawable\Tile.cpp" />
     <ClCompile Include="Framework\Bindable\Bindable.cpp" />
     <ClCompile Include="Framework\Bindable\IndexBuffer.cpp" />
     <ClCompile Include="Framework\Bindable\InputLayout.cpp" />
@@ -116,10 +117,7 @@
     <ClCompile Include="Framework\Bindable\VertexBuffer.cpp" />
     <ClCompile Include="Framework\Bindable\VertexShader.cpp" />
     <ClCompile Include="Framework\Camera.cpp" />
-    <ClCompile Include="Framework\Drawable\Cube.cpp" />
     <ClCompile Include="Framework\Drawable\Drawable.cpp" />
-    <ClCompile Include="Framework\Drawable\SolidSphere.cpp" />
-    <ClCompile Include="Framework\Drawable\Sphere.cpp" />
     <ClCompile Include="Framework\ErrorHandle\DxgiInfo.cpp" />
     <ClCompile Include="Framework\Managers\GDIPlusManager.cpp" />
     <ClCompile Include="Framework\Graphics.cpp" />
@@ -133,13 +131,16 @@
     <ClCompile Include="Framework\Inputs\Keyboard.cpp" />
     <ClCompile Include="Framework\ErrorHandle\MorExeption.cpp" />
     <ClCompile Include="Framework\Inputs\Mouse.cpp" />
-    <ClCompile Include="Framework\PointLight.cpp" />
     <ClCompile Include="Framework\Surface.cpp" />
     <ClCompile Include="Framework\Window.cpp" />
     <ClCompile Include="Framework\WinMain.cpp" />
+    <ClCompile Include="Src\App.cpp" />
+    <ClCompile Include="Src\Field.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Framework\App.h" />
+    <ClInclude Include="Framework\Drawable\Line.h" />
+    <ClInclude Include="Framework\Drawable\Tile.h" />
+    <ClInclude Include="Src\App.h" />
     <ClInclude Include="Framework\BindableCodex.h" />
     <ClInclude Include="Framework\Bindable\Bindable.h" />
     <ClInclude Include="Framework\Bindable\BindableHeaders.h" />
@@ -156,13 +157,10 @@
     <ClInclude Include="Framework\VertexLayout.h" />
     <ClInclude Include="Framework\Bindable\VertexShader.h" />
     <ClInclude Include="Framework\Camera.h" />
-    <ClInclude Include="Framework\Drawable\Cube.h" />
     <ClInclude Include="Framework\Drawable\Drawable.h" />
     <ClInclude Include="Framework\Drawable\DrawableHeader.h" />
     <ClInclude Include="Framework\Drawable\DrawableMemberData.h" />
     <ClInclude Include="Framework\Drawable\GeometryFactory.h" />
-    <ClInclude Include="Framework\Drawable\SolidSphere.h" />
-    <ClInclude Include="Framework\Drawable\Sphere.h" />
     <ClInclude Include="Framework\ErrorHandle\DxgiInfo.h" />
     <ClInclude Include="Framework\ErrorHandle\Macros\ThorwMacros.h" />
     <ClInclude Include="Framework\Managers\GDIPlusManager.h" />
@@ -179,7 +177,6 @@
     <ClInclude Include="Framework\ErrorHandle\Macros\GraphicsThrowMacros.h" />
     <ClInclude Include="Framework\Inputs\Keyboard.h" />
     <ClInclude Include="Framework\ErrorHandle\MorExeption.h" />
-    <ClInclude Include="Framework\PointLight.h" />
     <ClInclude Include="Framework\Surface.h" />
     <ClInclude Include="Framework\Utility\MorMath.h" />
     <ClInclude Include="Framework\Utility\MorTimer.h" />
@@ -188,63 +185,31 @@
     <ClInclude Include="Framework\Inputs\Mouse.h" />
     <ClInclude Include="Framework\Window.h" />
     <ClInclude Include="Framework\ErrorHandle\Macros\WindowThrowMacros.h" />
+    <ClInclude Include="Src\Board.h" />
+    <ClInclude Include="Src\Field.h" />
+    <ClInclude Include="Src\Snaek.h" />
+    <ClInclude Include="Src\Vec2.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Framework\Shader\6ColorPS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="Framework\Shader\LightPS.hlsl">
+    <FxCompile Include="Framework\Shader\Line2DPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="Framework\Shader\LightVS.hlsl">
+    <FxCompile Include="Framework\Shader\Line2DVS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="Framework\Shader\SolidColor.hlsl">
+    <FxCompile Include="Framework\Shader\Tile2DPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="Framework\Shader\TextureLightPS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="Framework\Shader\TextureLightVS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
-    </FxCompile>
-    <FxCompile Include="Framework\Shader\TexturePS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="Framework\Shader\TextureVS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="Framework\Shader\VertexShader.hlsl">
+    <FxCompile Include="Framework\Shader\Tile2DVS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Framework\Shader\ShaderByteCodes\%(Filename).cso</ObjectFileOutput>

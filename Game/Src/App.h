@@ -1,13 +1,14 @@
 #pragma once
 
-#include "Window.h"
-#include "Utility/MorTimer.h"
-#include "Drawable/Drawable.h"
-#include "Surface.h"
-#include "Managers/ImGuiManager.h"
-#include "Camera.h"
-#include "PointLight.h"
+#include "../Framework/Window.h"
+#include "../Framework/Utility/MorTimer.h"
+#include "../Framework/Drawable/Drawable.h"
+#include "../Framework/Surface.h"
+#include "../Framework/Managers/ImGuiManager.h"
+#include "../Framework/Camera.h"
 #include <set>
+#include "Board.h"
+#include "Snaek.h"
 
 class App
 {
@@ -19,22 +20,25 @@ public:
 	int Go();
 private:
 	void DoFrame();
+	void ImGuiWindows() noexcept;
 	void SpawnSimulationWindow() noexcept;
 	void SpawnDrawableControlWindowMangerWindow() noexcept;
 	void SpawnDrawableControlWindows() noexcept;
-	void SpawnDrawableSpawnWindow() noexcept;
 private:
-	float c[3] = { 0.0f,0.0f,0.0f };
+	float c[3] = { 0.1f,0.0f,0.1f };
 	ImGuiManager imgui;
 	Camera cam;
 	Window wnd;
 	MorTimer timer;
-	PointLight pl;
-	std::vector<std::unique_ptr<Drawable>> drawables;
+	Board brd;
+	Snek snek;
 	float SimulationSpeed = 1.0f;
 	bool paused = false;
 	std::set<int> DrawableId;
 	std::optional<int> index;
 	std::optional<int> TypeIndex;
-	int x = 0,y = 0;
+	Vei2 dir = { 0,0 };
+	float deltaTime = 0.0f;
+	static constexpr float SleepTime = 0.25f;
+	bool GameOver = false;
 };

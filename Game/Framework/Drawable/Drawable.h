@@ -21,9 +21,9 @@ public:
 	bool AddBind( std::shared_ptr<Bind::Bindable> bind ) noexcept( !IS_DEBUG );
 	virtual DirectX::XMMATRIX GetTransformXM() const noexcept = 0;
 	virtual DirectX::XMFLOAT4 GetColorXM() const noexcept = 0;
-	virtual float GetSpecularPower() const noexcept = 0;
-	virtual float GetSpecularIntesity() const noexcept = 0;
-	virtual bool SpawnControlWindow() noexcept = 0;
+	virtual float GetSpecularPower() const noexcept { return 0.0f; };
+	virtual float GetSpecularIntesity() const noexcept { return 0.0f; };
+	virtual bool SpawnControlWindow() noexcept { return false; };
 	virtual std::string GetType() const noexcept = 0;
 private:
 	const Bind::IndexBuffer* pIndexBuffer = nullptr;

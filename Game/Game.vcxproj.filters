@@ -24,9 +24,6 @@
     <ClCompile Include="Framework\Graphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Inputs\Keyboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -102,16 +99,16 @@
     <ClCompile Include="Framework\Managers\ImGuiManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Drawable\Cube.cpp">
+    <ClCompile Include="Framework\Drawable\Tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Drawable\Sphere.cpp">
+    <ClCompile Include="Src\App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Drawable\SolidSphere.cpp">
+    <ClCompile Include="Framework\Drawable\Line.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\PointLight.cpp">
+    <ClCompile Include="Src\Field.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -120,9 +117,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Graphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Inputs\Keyboard.h">
@@ -233,22 +227,10 @@
     <ClInclude Include="Framework\Bindable\BindableHeaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Drawable\Cube.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Utility\MorUtility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Drawable\Sphere.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Drawable\SolidSphere.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Drawable\DrawableHeader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PointLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Drawable\GeometryFactory.h">
@@ -263,16 +245,32 @@
     <ClInclude Include="Framework\BindableCodex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\App.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Drawable\Tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Drawable\Line.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Field.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Snaek.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Vec2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Board.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Framework\Shader\VertexShader.hlsl" />
-    <FxCompile Include="Framework\Shader\TextureVS.hlsl" />
-    <FxCompile Include="Framework\Shader\TexturePS.hlsl" />
-    <FxCompile Include="Framework\Shader\6ColorPS.hlsl" />
-    <FxCompile Include="Framework\Shader\LightPS.hlsl" />
-    <FxCompile Include="Framework\Shader\LightVS.hlsl" />
-    <FxCompile Include="Framework\Shader\SolidColor.hlsl" />
-    <FxCompile Include="Framework\Shader\TextureLightVS.hlsl" />
-    <FxCompile Include="Framework\Shader\TextureLightPS.hlsl" />
+    <FxCompile Include="Framework\Shader\Tile2DVS.hlsl" />
+    <FxCompile Include="Framework\Shader\Tile2DPS.hlsl" />
+    <FxCompile Include="Framework\Shader\Line2DVS.hlsl" />
+    <FxCompile Include="Framework\Shader\Line2DPS.hlsl" />
   </ItemGroup>
 </Project>

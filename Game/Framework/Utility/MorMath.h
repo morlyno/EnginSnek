@@ -1,10 +1,11 @@
 #pragma once
 
-namespace MorMath
+namespace Mor::Math
 {
 
-	static constexpr float PI = 3.14159265f;
-	static constexpr double PI_D = 3.1415926535897932;
+	constexpr float PI = 3.14159265f;
+	constexpr double PI_D = 3.1415926535897932;
+	constexpr float PIOver2 = PI / 2.0f;
 
 	template<typename T>
 	T fmod( T a,T b ) noexcept
